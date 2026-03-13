@@ -25,7 +25,7 @@ RUN wget https://github.com/novnc/noVNC/archive/refs/heads/master.zip -O /tmp/no
     rm -rf /tmp/novnc.zip /tmp/noVNC-master
 
 
-ENV ISO_URL="https://archive.org/download/windows-10-lite-edition-19h2-x64/Windows%2010%20Lite%20Edition%2019H2%20x64.iso"
+ENV ISO_URL="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
 
 
 RUN echo '#!/bin/bash\n\
@@ -36,7 +36,7 @@ if [ -e /dev/kvm ]; then\n\
   echo "✅ KVM acceleration available"\n\
   KVM_ARG="-enable-kvm"\n\
   CPU_ARG="host"\n\
-  MEMORY="4G"\n\
+  MEMORY="8G"\n\
   SMP_CORES=4\n\
 else\n\
   echo "⚠️  KVM not available - using slower emulation mode"\n\
