@@ -48,7 +48,7 @@ fi\n\
 \n\
 # Download ISO if needed
 if [ ! -f "/iso/os.iso" ]; then
-  echo "📥 Downloading Windows ISO..."
+RUN echo "📥 Downloading Windows ISO..."
   aria2c -x16 -s16 \
   --header="Cookie: accountToken=2HbvMwIYZOeTy0fF40COtm0kStYIUaN" \
   --header="Referer: https://gofile.io/" \
