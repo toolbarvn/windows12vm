@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     net-tools \
     unzip \
     python3 \
-    aria2 \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -26,7 +25,8 @@ RUN wget https://github.com/novnc/noVNC/archive/refs/heads/master.zip -O /tmp/no
     rm -rf /tmp/novnc.zip /tmp/noVNC-master
 
 
-ENV ISO_URL="https://store5.gofile.io/download/web/941664c0-a9ba-471e-a92a-00f8437697aa/Win11.LTSC.May.2024.iso"
+ENV ISO_URL="https://archive.org/download/windows-10-lite-edition-19h2-x64/Windows%2010%20Lite%20Edition%2019H2%20x64.iso"
+
 
 RUN echo '#!/bin/bash\n\
 set -e\n\
@@ -42,24 +42,20 @@ else\n\
   echo "⚠️  KVM not available - using slower emulation mode"\n\
   KVM_ARG=""\n\
   CPU_ARG="qemu64"\n\
-  MEMORY="2G"\n\
-  SMP_CORES=1\n\
+  MEMORY="4G"\n\
+  SMP_CORES=2\n\
 fi\n\
 \n\
-# Download ISO if needed
-if [ ! -f "/iso/os.iso" ]; then
-RUN echo "📥 Downloading Windows ISO..."
-  aria2c -x16 -s16 \
-  --header="Cookie: accountToken=2HbvMwIYZOeTy0fF40COtm0kStYIUaN" \
-  --header="Referer: https://gofile.io/" \
-  --user-agent="Mozilla/5.0" \
-  "$ISO_URL" \
-  -d /iso -o os.iso
-fi
+# Download ISO if needed\n\
+if [ ! -f "/iso/os.iso" ]; then\n\
+  echo "📥 Downloading Windows 10 ISO..."\n\
+  wget -q --show-progress "$ISO_URL" -O "/iso/os.iso"\n\
+fi\n\
+\n\
 # Create disk image if not exists\n\
 if [ ! -f "/data/disk.qcow2" ]; then\n\
-  echo "💽 Creating 150GB virtual disk..."\n\
-  qemu-img create -f qcow2 "/data/disk.qcow2" 150G\n\
+  echo "💽 Creating 128GB virtual disk..."\n\
+  qemu-img create -f qcow2 "/data/disk.qcow2" 128G\n\
 fi\n\
 \n\
 # Windows-specific boot parameters\n\
