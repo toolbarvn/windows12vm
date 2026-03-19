@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     net-tools \
     unzip \
     python3 \
+    aria2 \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -45,12 +46,16 @@ else\n\
   SMP_CORES=1\n\
 fi\n\
 \n\
-# Download ISO if needed\n\
-if [ ! -f "/iso/os.iso" ]; then\n\
-  echo "📥 Downloading Windows 10 ISO..."\n\
-  wget -q --show-progress "$ISO_URL" -O "/iso/os.iso"\n\
-fi\n\
-\n\
+# Download ISO if needed
+if [ ! -f "/iso/os.iso" ]; then
+  echo "📥 Downloading Windows ISO..."
+  aria2c -x16 -s16 \
+  --header="Cookie: accountToken=2HbvMwIYZOeTy0fF40COtm0kStYIUaN" \
+  --header="Referer: https://gofile.io/" \
+  --user-agent="Mozilla/5.0" \
+  "$ISO_URL" \
+  -d /iso -o os.iso
+fi
 # Create disk image if not exists\n\
 if [ ! -f "/data/disk.qcow2" ]; then\n\
   echo "💽 Creating 150GB virtual disk..."\n\
