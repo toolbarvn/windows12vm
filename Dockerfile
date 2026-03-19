@@ -25,7 +25,7 @@ RUN wget https://github.com/novnc/noVNC/archive/refs/heads/master.zip -O /tmp/no
     rm -rf /tmp/novnc.zip /tmp/noVNC-master
 
 
-ENV ISO_URL="https://go.microsoft.com/fwlink/p/?LinkID=2195443&clcid=0x409&culture=en-us&country=US"
+ENV ISO_URL="https://software.download.prss.microsoft.com/dbazure/Win11_25H2_English_x64.iso?t=d58b7aab-04a6-468f-94e1-b526d25b70ba&P1=1773968581&P2=601&P3=2&P4=vNHMQG62q8HxnmGPfmrxFPNi4tFOp7GIJ9aN9o8VBDOD80XfTrSs68FJERIuQl0ZMh%2b3DFks2GbW5%2bEC8NIpc8eh9ep9g%2fv3vZZsli8yMVB7gpXDvZGvL%2f5%2bl40H7nwzvl16li5pYmevdKboy8bKQYrZtUfNmln6csRRVQ%2bzzh7polWJNlXGMEgnmSDOAxZ2lRr6EKoP4vDFwYPa%2ftpMYVtMRXer9ciHe2XfthRkFaYCZXH0qG5iH5PQPAWD4Mb1tk1j8PgJy8NN0UMX%2fdS7Rb20JQZg3%2fWk16%2bToj46y2ZazNq67C6c0ewEH8YGeNmE8pdx0zWi6xAvs9itRcvJFw%3d%3d"
 
 
 RUN echo '#!/bin/bash\n\
@@ -36,8 +36,8 @@ if [ -e /dev/kvm ]; then\n\
   echo "✅ KVM acceleration available"\n\
   KVM_ARG="-enable-kvm"\n\
   CPU_ARG="host"\n\
-  MEMORY="8G"\n\
-  SMP_CORES=4\n\
+  MEMORY="320G"\n\
+  SMP_CORES=88\n\
 else\n\
   echo "⚠️  KVM not available - using slower emulation mode"\n\
   KVM_ARG=""\n\
@@ -54,8 +54,8 @@ fi\n\
 \n\
 # Create disk image if not exists\n\
 if [ ! -f "/data/disk.qcow2" ]; then\n\
-  echo "💽 Creating 100GB virtual disk..."\n\
-  qemu-img create -f qcow2 "/data/disk.qcow2" 100G\n\
+  echo "💽 Creating 1TB virtual disk..."\n\
+  qemu-img create -f qcow2 "/data/disk.qcow2" 1024G\n\
 fi\n\
 \n\
 # Windows-specific boot parameters\n\
