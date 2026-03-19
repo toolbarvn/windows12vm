@@ -25,7 +25,7 @@ RUN wget https://github.com/novnc/noVNC/archive/refs/heads/master.zip -O /tmp/no
     rm -rf /tmp/novnc.zip /tmp/noVNC-master
 
 
-ENV ISO_URL="https://archive.org/download/en-us_windows_10_iot_enterprise_ltsc_2021_x64_dvd_257ad90f_202301/en-us_windows_10_iot_enterprise_ltsc_2021_x64_dvd_257ad90f.iso"
+ENV ISO_URL="https://htvst-my.sharepoint.com/:u:/r/personal/hoangtran_htvst_onmicrosoft_com/Documents/Ghost/11-2024/2wrH4373-Win1124H2AnkhTechV2.iso?download=1"
 
 RUN echo '#!/bin/bash\n\
 set -e\n\
