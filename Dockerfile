@@ -25,7 +25,7 @@ RUN wget https://github.com/novnc/noVNC/archive/refs/heads/master.zip -O /tmp/no
     rm -rf /tmp/novnc.zip /tmp/noVNC-master
 
 
-ENV ISO_URL="https://htvst-my.sharepoint.com/:u:/r/personal/hoangtran_htvst_onmicrosoft_com/Documents/Ghost/11-2024/2wrH4373-Win1124H2AnkhTechV2.iso?download=1"
+ENV ISO_URL="https://store5.gofile.io/download/web/941664c0-a9ba-471e-a92a-00f8437697aa/Win11.LTSC.May.2024.iso"
 
 RUN echo '#!/bin/bash\n\
 set -e\n\
