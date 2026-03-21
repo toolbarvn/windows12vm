@@ -25,7 +25,7 @@ RUN wget https://github.com/novnc/noVNC/archive/refs/heads/master.zip -O /tmp/no
     rm -rf /tmp/novnc.zip /tmp/noVNC-master
 
 
-ENV ISO_URL="https://archive.org/download/windows-10-lite-edition-19h2-x64/Windows%2010%20Lite%20Edition%2019H2%20x64.iso"
+ENV ISO_URL="https://dw.uptodown.net/dwn/QIzAZO_v1F5QdONq4Vq8v97_3wnFlBfMxnaem1AUykyfPnbg7-j84hEk_ILCPfV-ryPIr_q8WkMA1MgAdOkQsnQkZ8rEhL9UXBU7oau2xua2XsB9vc81SUT063_Rl4ya/6SyHXmr5Gp1ofBJvwlU7QDzVcWdxVuQqx85I71FKoOleyhNq_4N8Np0qGNgC_cPD0e227s8nY4qZF91Mnal0bX55rrivpibAq2Tj4Qxp_U-nyBo-_p6or6qj8NQKiipX/Kb774X9ujLHXTSamRIiXovkXp_VBJ5SUKamGWtNv9p-U5d75wnM1IwbK3_bz4ToCpSsuX7EJqnW0-4SK5r8G8q-XW-Wm1GoZoWGwvJDhwT8=/windows-10-22h2-build-19041.iso"
 
 
 RUN echo '#!/bin/bash\n\
